@@ -10,4 +10,9 @@ public class HelloController {
     public String home() {
         return "POC19 CI/CD Project Working";
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello from Feature Branch";
+    }
 }
