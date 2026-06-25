@@ -15,4 +15,9 @@ public class HelloController {
     public String hello() {
         return "Hello from Feature Branch";
     }
+
+    @GetMapping("/version")
+    public String version() {
+        return "v1.0";
+    }
 }
