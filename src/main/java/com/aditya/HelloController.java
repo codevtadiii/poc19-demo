@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {    
+public class HelloController {
 
     @GetMapping("/")
     public String home() {
@@ -15,7 +15,7 @@ public class HelloController {
     public String hello() {
         return "Hello from Feature Branch";
     }
-    
+
     @GetMapping("/version")
     public String version() {
         return "v1.0";
