@@ -7,11 +7,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -55,15 +53,18 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker logout || true
-            rm -f ~/.docker/config.json || true
+            set -e
 
-            docker pull adityajhacodess/poc19-demo:latest
-
+            echo "Stopping existing container..."
             docker stop poc19-demo || true
             docker rm poc19-demo || true
 
+            echo "Pulling latest image..."
+            docker pull adityajhacodess/poc19-demo:latest
+
+            echo "Starting new container..."
             docker run -d \
               --name poc19-demo \
+              --restart always \
               -p 8085:8085 \
               adityajhacodess/poc19-demo:latest
