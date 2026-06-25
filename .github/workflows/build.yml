@@ -55,14 +55,18 @@ jobs:
           script: |
             set -e
 
-            echo "Stopping existing container..."
-            docker stop poc19-demo || true
-            docker rm poc19-demo || true
+            echo "===== CLEANUP OLD CONTAINERS ====="
+            docker ps -aq | xargs -r docker stop || true
+            docker ps -aq | xargs -r docker rm || true
 
-            echo "Pulling latest image..."
+            echo "===== FIXING DOCKER PROXY / PORT ISSUES ====="
+            sudo fuser -k 8085/tcp || true
+            sudo systemctl restart docker || true
+
+            echo "===== PULLING LATEST IMAGE ====="
             docker pull adityajhacodess/poc19-demo:latest
 
-            echo "Starting new container..."
+            echo "===== STARTING NEW CONTAINER ====="
             docker run -d \
               --name poc19-demo \
               --restart always \
