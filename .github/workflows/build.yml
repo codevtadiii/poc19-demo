@@ -48,13 +48,16 @@ jobs:
         run: |
           docker push adityajhacodess/poc19-demo:latest
 
-      - name: Deploy to EC2
+            - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            docker logout || true
+            rm -f ~/.docker/config.json || true
+
             docker pull adityajhacodess/poc19-demo:latest
 
             docker stop poc19-demo || true
