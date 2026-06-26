@@ -13,7 +13,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello from Feature Branch";
+        return "Hello from hello-api Feature Branch Get ready";
     }
 
     @GetMapping("/version")
