@@ -8,11 +8,11 @@ public class HelloController {
 
     @GetMapping("/")
     public String home() {
-        return "POC19 CI/CD Project Working 2nd time";
+        return "erripuka chadukondi firstuu ";
     }
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello from hello-api Feature Branch Get ready";
+        return "Niku Hello entra Dengey !!";
     }
 }
