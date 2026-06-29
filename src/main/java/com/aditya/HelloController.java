@@ -8,12 +8,12 @@ public class HelloController {
 
     @GetMapping("/")
     public String home() {
-        return "erripuka chadukondi firstuu ";
+        return "Welcome to the HomePage! ";
     }
 
     @GetMapping("/hello")
     public String hello() {
-        return "Niku Hello entra Dengey !!";
+        return "Hello my Friend!";
     }
 
     @GetMapping("/version")
